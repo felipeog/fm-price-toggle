@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
+      defer
+    ></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <main
+        x-data="{
+          monthly: true,
+          plans: [
+            {
+              title: 'Basic',
+              monthly: 19.99,
+              annualy: 199.99,
+              features: [ '500 GB Storage', '2 users allowed', 'Send up to 3 GB' ]
+            },
+            {
+              title: 'Professional',
+              monthly: 24.99,
+              annualy: 249.99,
+              features: [ '1 TB Storage', '5 users allowed', 'Send up to 10 GB' ]
+            },
+            {
+              title: 'Master',
+              monthly: 39.99,
+              annualy: 399.99,
+              features: [ '2 GB Storage', '10 users allowed', 'Send up to 120 GB' ]
+            }
+          ]
+        }"
+        class="container"
+      >
+        <header class="header">
+          <h1 class="header__title">Our pricing</h1>
+
+          <div class="toggle">
+            <button @click="monthly = false" class="toggle__label">
+              Annualy
+            </button>
+            <button @click="monthly = !monthly" class="toggle__toggle">
+              Toggle
+            </button>
+            <button @click="monthly = true" class="toggle__label">
+              Monthly
+            </button>
+          </div>
+        </header>
+
+        <section class="pricing">
+          <template x-for="plan in plans" :key="plan">
+            <article class="pricing__card">
+              <h2 x-text="plan.title" class="pricing__title"></h2>
+
+              <p
+                x-text="[ monthly ? plan.monthly : 'alor' + plan.annualy ]"
+                class="pricing__price"
+              ></p>
+
+              <ul class="feats">
+                <template x-for="feature in plan.features" :key="feature">
+                  <li x-text="feature" class="feats__item"></li>
+                </template>
+              </ul>
+
+              <button class="feats__cta">Learn more</button>
+            </article>
+          </template>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
