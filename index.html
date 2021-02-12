@@ -23,7 +23,7 @@
     <div class="wrapper">
       <main x-data="pricing()" class="container">
         <header class="header">
-          <h1 class="header__title">Our pricing</h1>
+          <h1 class="header__title">Our Pricing</h1>
 
           <div class="actions">
             <button @click="setToAnnualyPlan()" class="actions__button">
@@ -64,11 +64,11 @@
 
               <ul class="feats">
                 <li
-                  x-text="[ `${plan.features.storage} storage` ]"
+                  x-text="[ `${plan.features.storage} Storage` ]"
                   class="feats__item"
                 ></li>
                 <li
-                  x-text="[ `${plan.features.users} users allowed` ]"
+                  x-text="[ `${plan.features.users} User${plan.features.users === 1 ? '' : 's' } Allowed` ]"
                   class="feats__item"
                 ></li>
                 <li
@@ -113,8 +113,8 @@
                   annualy: 399.99,
                   features: {
                     storage: '2 TB',
-                    users: 1,
-                    upload: '120 GB',
+                    users: 10,
+                    upload: '20 GB',
                   },
                 },
               ],
