@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Pricing Toggle</title>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
       defer
@@ -14,55 +16,24 @@
 
   <body>
     <div class="wrapper">
-      <main
-        x-data="{
-          monthly: true,
-          plans: [
-            {
-              title: 'Basic',
-              monthly: 19.99,
-              annualy: 199.99,
-              features: {
-                storage: '500 GB',
-                users: 2,
-                upload: '3 GB'
-              }
-            },
-            {
-              title: 'Professional',
-              monthly: 24.99,
-              annualy: 249.99,
-              features: {
-                storage: '1 TB',
-                users: 5,
-                upload: '10 GB'
-              }
-            },
-            {
-              title: 'Master',
-              monthly: 39.99,
-              annualy: 399.99,
-              features: {
-                storage: '2 TB',
-                users: 1,
-                upload: '120 GB'
-              }
-            }
-          ]
-        }"
-        class="container"
-      >
+      <main x-data="pricing()" class="container">
         <header class="header">
           <h1 class="header__title">Our pricing</h1>
 
           <div class="toggle">
-            <button @click="monthly = false" class="toggle__label">
+            <button @click="setToAnnualyPlan()" class="toggle__label">
               Annualy
             </button>
-            <button @click="monthly = !monthly" class="toggle__toggle">
+
+            <button
+              @click="togglePlan()"
+              class="toggle__toggle"
+              :class="{ 'toggle__toggle--active' : isMonthly() }"
+            >
               Toggle
             </button>
-            <button @click="monthly = true" class="toggle__label">
+
+            <button @click="setToMonthlyPlan()" class="toggle__label">
               Monthly
             </button>
           </div>
@@ -74,7 +45,7 @@
               <h2 x-text="plan.title" class="pricing__title"></h2>
 
               <p
-                x-text="[ `$${monthly ? plan.monthly : plan.annualy}` ]"
+                x-text="[ `$${isMonthly() ? plan.monthly : plan.annualy}` ]"
                 class="pricing__price"
               ></p>
 
@@ -97,6 +68,58 @@
             </article>
           </template>
         </section>
+
+        <script>
+          function pricing() {
+            return {
+              monthly: true,
+              plans: [
+                {
+                  title: 'Basic',
+                  monthly: 19.99,
+                  annualy: 199.99,
+                  features: {
+                    storage: '500 GB',
+                    users: 2,
+                    upload: '3 GB',
+                  },
+                },
+                {
+                  title: 'Professional',
+                  monthly: 24.99,
+                  annualy: 249.99,
+                  features: {
+                    storage: '1 TB',
+                    users: 5,
+                    upload: '10 GB',
+                  },
+                },
+                {
+                  title: 'Master',
+                  monthly: 39.99,
+                  annualy: 399.99,
+                  features: {
+                    storage: '2 TB',
+                    users: 1,
+                    upload: '120 GB',
+                  },
+                },
+              ],
+              setToMonthlyPlan() {
+                this.monthly = true
+              },
+              setToAnnualyPlan() {
+                this.monthly = false
+              },
+              togglePlan() {
+                this.monthly = !this.monthly
+              },
+              isMonthly() {
+                return this.monthly
+              },
+            }
+          }
+        </script>
       </main>
     </div>
   </body>
