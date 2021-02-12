@@ -7,7 +7,7 @@ https://fm-price-toggle.netlify.app/
 ## How to run
 
 - Clone the repo
-- Open `index.html` or run `npx liver-server`
+- Open `index.html` or run `npx live-server`
 
 ## Preview
 
