@@ -5,6 +5,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <link rel="stylesheet" href="index.css" />
     <title>Pricing Toggle</title>
@@ -20,28 +25,33 @@
         <header class="header">
           <h1 class="header__title">Our pricing</h1>
 
-          <div class="toggle">
-            <button @click="setToAnnualyPlan()" class="toggle__label">
+          <div class="actions">
+            <button @click="setToAnnualyPlan()" class="actions__button">
               Annualy
             </button>
 
             <button
               @click="togglePlan()"
-              class="toggle__toggle"
-              :class="{ 'toggle__toggle--active' : isMonthly() }"
-            >
-              Toggle
-            </button>
+              class="actions__toggle"
+              :class="{ 'actions__toggle--active' : isMonthly() }"
+            ></button>
 
-            <button @click="setToMonthlyPlan()" class="toggle__label">
+            <button @click="setToMonthlyPlan()" class="actions__button">
               Monthly
             </button>
           </div>
         </header>
 
         <section class="pricing">
-          <template x-for="plan in plans" :key="plan">
-            <article class="pricing__card">
+          <template x-for="(plan, index) in plans" :key="plan">
+            <article
+              class="pricing__card"
+              :class="{
+                'pricing__card--left' : index === 0,
+                'pricing__card--featured' : index === 1,
+                'pricing__card--right' : index === 2
+              }"
+            >
               <h2 x-text="plan.title" class="pricing__title"></h2>
 
               <p
