@@ -54,10 +54,13 @@
             >
               <h2 x-text="plan.title" class="pricing__title"></h2>
 
-              <p
-                x-text="[ `$${isMonthly() ? plan.monthly : plan.annualy}` ]"
-                class="pricing__price"
-              ></p>
+              <p class="price">
+                <span class="price__sign">$</span>
+                <span
+                  x-text="[ isMonthly() ? plan.monthly : plan.annualy ]"
+                  class="price__value"
+                ></span>
+              </p>
 
               <ul class="feats">
                 <li

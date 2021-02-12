@@ -141,10 +141,18 @@ ul {
   color: var(--title-color);
 }
 
-.pricing__price {
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.8rem;
+}
+
+.price__value,
+.price__sign {
   font-weight: bold;
   color: var(--price-color);
-  margin: 1.8rem;
+  margin-right: 0.4rem;
 }
 
 .feats__item {
@@ -186,7 +194,8 @@ ul {
   color: var(--white);
 }
 
-.pricing__card--featured .pricing__price {
+.pricing__card--featured .price__sign,
+.pricing__card--featured .price__value {
   color: var(--white);
 }
 
@@ -235,7 +244,11 @@ ul {
     padding-bottom: 3.4rem;
   }
 
-  .pricing__price {
+  .price__sign {
+    font-size: 2.4rem;
+  }
+
+  .price__value {
     font-size: 4rem;
   }
 }
@@ -249,7 +262,11 @@ ul {
     margin-top: 2rem;
   }
 
-  .pricing__price {
-    font-size: 2.6rem;
+  .price__sign {
+    font-size: 1.6rem;
+  }
+
+  .price__value {
+    font-size: 3.4rem;
   }
 }
