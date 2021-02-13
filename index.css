@@ -1,6 +1,14 @@
+/* ==========
+general styles
+========== */
 :root {
   --font-size: 15px;
   --font-family: Montserrat, sans-serif;
+  --transition-duration: 200ms;
+  --card-border-radius: 0.8rem;
+  --button-border-radius: 0.4rem;
+
+  /* colors */
   --primary: hsl(237, 63%, 64%);
   --white: #fff;
   --app-bg-color: hsl(240, 78%, 98%);
@@ -10,9 +18,6 @@
   --border-color: hsl(0, 0%, 85%);
   --gradient: linear-gradient(135deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
   --box-shadow-color: rgba(0, 0, 0, 0.1);
-  --transition-duration: 200ms;
-  --card-border-radius: 0.8rem;
-  --button-border-radius: 0.4rem;
 }
 
 *,
@@ -36,6 +41,7 @@ body {
   background-color: var(--app-bg-color);
 }
 
+/* resets */
 h1,
 h2 {
   margin: 0;
@@ -61,6 +67,9 @@ ul {
   margin: 0;
 }
 
+/* ==========
+app layout
+========== */
 .wrapper {
   min-height: 100vh;
   display: grid;
@@ -74,11 +83,13 @@ ul {
   padding: 2rem 1rem;
 }
 
+/* header block */
 .header__title {
   color: var(--title-color);
   text-align: center;
 }
 
+/* actions block */
 .actions {
   display: flex;
   justify-content: center;
@@ -122,10 +133,7 @@ ul {
   transition: var(--transition-duration);
 }
 
-.actions__toggle.actions__toggle--active::before {
-  left: 1.6rem;
-}
-
+/* pricing block */
 .pricing {
   margin-top: 3rem;
 }
@@ -142,6 +150,7 @@ ul {
   color: var(--title-color);
 }
 
+/* price block */
 .price {
   display: flex;
   justify-content: center;
@@ -156,6 +165,7 @@ ul {
   margin-right: 0.4rem;
 }
 
+/* feats block */
 .feats__item {
   padding: 1rem;
   border-bottom: 0.1rem solid var(--border-color);
@@ -206,6 +216,13 @@ ul {
   opacity: 0;
 }
 
+/* ==========
+modifiers
+========== */
+.actions__toggle--active.actions__toggle::before {
+  left: 1.6rem;
+}
+
 .pricing__card--featured {
   background: var(--gradient);
 }
@@ -244,6 +261,10 @@ ul {
   box-shadow: inset 0 0 0 0.1rem var(--white);
 }
 
+/* ==========
+media queries
+========== */
+/* desktop */
 @media screen and (min-width: 1200px) {
   .pricing {
     display: flex;
@@ -284,6 +305,7 @@ ul {
   }
 }
 
+/* mobile */
 @media screen and (max-width: 1199px) {
   .pricing__card {
     width: 18.2rem;
