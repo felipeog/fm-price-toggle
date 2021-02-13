@@ -168,7 +168,7 @@ ul {
 }
 
 .feats__cta {
-  background: var(--gradient);
+  position: relative;
   width: 100%;
   padding: 1rem;
   color: var(--white);
@@ -181,10 +181,29 @@ ul {
   transition: box-shadow var(--transition-duration);
 }
 
+.feats__cta::before {
+  position: absolute;
+  content: '';
+  display: block;
+  background: var(--gradient);
+  border-radius: var(--button-border-radius);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: var(--transition-duration);
+  opacity: 1;
+}
+
 .feats__cta:hover {
   background: unset;
   color: var(--primary);
   box-shadow: inset 0 0 0 0.1rem var(--primary);
+}
+
+.feats__cta:hover::before {
+  opacity: 0;
 }
 
 .pricing__card--featured {
@@ -210,12 +229,13 @@ ul {
 }
 
 .pricing__card--featured .feats__cta {
-  background: var(--white);
+  background-color: var(--white);
   color: var(--primary);
+  transition: background-color var(--transition-duration);
 }
 
 .pricing__card--featured .feats__cta:hover {
-  background: transparent;
+  background-color: transparent;
   color: var(--white);
   box-shadow: inset 0 0 0 0.1rem var(--white);
 }
